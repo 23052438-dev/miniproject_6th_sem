@@ -227,34 +227,7 @@ function sendMsg(){
     btn.disabled=false;
     inp.focus();
   });
-},
-  body: JSON.stringify({
-    messages: [
-      { role: 'system', content: BOT_SYSTEM },
-      ...chatHistory.slice(-12)
-    ]
-  })
-})
-  .then(r=>r.json())
-  .then(d=>{
-    if(typing.parentNode)typing.parentNode.removeChild(typing);
-    let reply='';
-    if(d.choices&&d.choices[0]){
-      reply=d.choices[0].message.content;
-      chatHistory.push({role:'assistant',content:reply});
-    } else if(d.error){
-      reply='⚠️ Error: '+d.error.message;
-    } else {
-      reply='⚠️ Unexpected response. Please try again.';
-    }
-    appendMsg(fmt(reply),'bot');
-  })
-  .catch(err=>{
-    if(typing.parentNode)typing.parentNode.removeChild(typing);
-    appendMsg('⚠️ Network error. Please check your connection and try again.','bot');
-    console.error(err);
-  })
-  .finally(()=>{inp.disabled=false;btn.disabled=false;inp.focus();});
+
 }
 
 function fmt(t){
