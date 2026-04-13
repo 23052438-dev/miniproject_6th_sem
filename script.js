@@ -108,22 +108,8 @@ function doRegister(){
   setTimeout(()=>goTo('login'),1100);
 }
 
-function doLogout(){
-  window.OPENAI_API_KEY=k;
-  document.getElementById('ckeyrow').style.display='none';
-  appendMsg('✅ OpenAI key saved! GameBot AI is ready.','bot');
-}
-
-
-goTo('home');}
-function doDelete(){if(confirm('Delete your account?')){localStorage.removeItem('ghU');
-  window.OPENAI_API_KEY=k;
-  document.getElementById('ckeyrow').style.display='none';
-  appendMsg('✅ OpenAI key saved! GameBot AI is ready.','bot');
-}
-
-
-goTo('home');}}
+function doLogout(){goTo('home');}
+function doDelete(){if(confirm('Delete your account?')){localStorage.removeItem('ghU');goTo('home');}}
 
 function updateClock(){const el=document.getElementById('clk');if(el)el.textContent=new Date().toLocaleTimeString();}
 setInterval(updateClock,1000);
@@ -200,7 +186,7 @@ function sendMsg(){
 
   const typing=appendMsg('Thinking...','typing');
 
-  // ✅ Calls Vercel serverless function — keeps API key safe on server
+  // ✅ PUT FETCH HERE
   fetch('/api/chat', {
     method: 'POST',
     headers: {
@@ -215,7 +201,7 @@ function sendMsg(){
   })
   .then(r=>r.json())
   .then(d=>{
-    console.log("API RESPONSE:", d);
+    console.log("API RESPONSE:", d); // 🔥 debug
 
     if(typing.parentNode) typing.parentNode.removeChild(typing);
 
@@ -248,12 +234,5 @@ function fmt(t){
   return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/\n/g,'<br>');
 }
 function esc(t){const d=document.createElement('div');d.appendChild(document.createTextNode(t));return d.innerHTML;}
-
-
-  window.OPENAI_API_KEY=k;
-  document.getElementById('ckeyrow').style.display='none';
-  appendMsg('✅ OpenAI key saved! GameBot AI is ready.','bot');
-}
-
 
 goTo('home');
