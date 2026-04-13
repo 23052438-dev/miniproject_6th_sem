@@ -174,17 +174,60 @@ function sendMsg(){
   const btn=document.getElementById('csend');
   const txt=inp.value.trim();
   if(!txt)return;
+
   appendMsg(esc(txt),'user');
   chatHistory.push({role:'user',content:txt});
-  inp.value='';inp.disabled=true;btn.disabled=true;
+
+  inp.value='';
+  inp.disabled=true;
+  btn.disabled=true;
+
   document.getElementById('qrow').style.display='none';
+
   const typing=appendMsg('Thinking...','typing');
 
-fetch('/api/chat', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
+  // ✅ PUT FETCH HERE
+  fetch('/api/chat', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      messages: [
+        { role: 'system', content: BOT_SYSTEM },
+        ...chatHistory.slice(-12)
+      ]
+    })
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    console.log("API RESPONSE:", d); // 🔥 debug
+
+    if(typing.parentNode) typing.parentNode.removeChild(typing);
+
+    let reply='';
+    if(d.choices && d.choices[0]){
+      reply=d.choices[0].message.content;
+      chatHistory.push({role:'assistant',content:reply});
+    } else if(d.error){
+      reply='⚠️ Error: ' + (d.error.message || JSON.stringify(d.error));
+    } else {
+      reply='⚠️ Unexpected response. Please try again.';
+    }
+
+    appendMsg(fmt(reply),'bot');
+  })
+  .catch(err=>{
+    if(typing.parentNode) typing.parentNode.removeChild(typing);
+    appendMsg('⚠️ Network error. Please try again.','bot');
+    console.error(err);
+  })
+  .finally(()=>{
+    inp.disabled=false;
+    btn.disabled=false;
+    inp.focus();
+  });
+},
   body: JSON.stringify({
     messages: [
       { role: 'system', content: BOT_SYSTEM },
