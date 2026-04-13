@@ -180,7 +180,7 @@ function sendMsg(){
   document.getElementById('qrow').style.display='none';
   const typing=appendMsg('Thinking...','typing');
 
-  fetch('https://api.openai.com/v1/chat/completions',{
+ fetch('/api/chat', {
     method:'POST',
     headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_API_KEY},
     body:JSON.stringify({
