@@ -180,15 +180,18 @@ function sendMsg(){
   document.getElementById('qrow').style.display='none';
   const typing=appendMsg('Thinking...','typing');
 
- fetch('/api/chat', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_API_KEY},
-    body:JSON.stringify({
-      model:'gpt-4o-mini',
-      max_tokens:700,
-      messages:[{role:'system',content:BOT_SYSTEM},...chatHistory.slice(-12)]
-    })
+fetch('/api/chat', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    messages: [
+      { role: 'system', content: BOT_SYSTEM },
+      ...chatHistory.slice(-12)
+    ]
   })
+})
   .then(r=>r.json())
   .then(d=>{
     if(typing.parentNode)typing.parentNode.removeChild(typing);
