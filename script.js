@@ -124,34 +124,34 @@ if(localStorage.getItem('ghTheme')==='light'){
   setTimeout(()=>{const b=document.getElementById('themeBtn');if(b)b.classList.add('lit');},0);
 }
 
-// ===== CHATGPT =====
-function getKey(){return localStorage.getItem('ghOpenAIKey')||'';}
-function saveKey(){
-  const v=document.getElementById('keyInp').value.trim();
-  if(!v.startsWith('sk-')){alert('Please enter a valid OpenAI API key starting with sk-');return;}
-  localStorage.setItem('ghOpenAIKey',v);
-  showChatArea();
-}
-function resetKey(){
-  localStorage.removeItem('ghOpenAIKey');
-  chatHistory=[];
-  document.getElementById('chatArea').classList.remove('visible');
-  document.getElementById('keyScreen').style.display='flex';
-  document.getElementById('keyInp').value='';
-  document.getElementById('cmsgs').innerHTML='<div class="cmsg bot">👋 Hey gamer! I\'m <strong>GameBot AI</strong>, powered by ChatGPT.<br><br>Tell me a genre — <em>Action, RPG, Horror, Strategy, Sports, Indie, Puzzle</em> — and I\'ll recommend the best games from around the world! 🎮</div>';
-  document.getElementById('qrow').style.display='flex';
-}
-function showChatArea(){
-  document.getElementById('keyScreen').style.display='none';
-  document.getElementById('chatArea').classList.add('visible');
-}
+// ===== GAMEBOT AI (OpenAI) =====
+// 🔑 Paste your OpenAI API key here — visitors chat instantly, no setup needed
+const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY_HERE';
+
+const BOT_SYSTEM = `You are GameBot AI, a friendly and expert assistant for Game Hub — an online gaming store.
+
+You have TWO core jobs:
+
+1. GAME RECOMMENDATIONS: When a user shares their taste, genre, mood, or platform, recommend the best matching games worldwide. For each game include: name, developer, release year, platforms, and a 1-sentence reason why they will love it. Number them clearly and use gaming emojis naturally.
+
+2. WEBSITE GUIDE: Help users navigate Game Hub. Here is how the site works:
+   - HOME: Landing page — click "GAME ON" to enter the store.
+   - LOGIN / REGISTER: Create an account or sign in to access the store.
+   - GAMES (sidebar): Browse all games — GTA V (₹1,299), The Witcher 3 (₹1,499), Minecraft (₹499). Click "View Game" to see details, screenshots, and a Buy Now button.
+   - OFFERS (sidebar): Discounted games — GTA V at ₹999 (23% off), Witcher 3 at ₹1,299 (13% off), Minecraft at ₹499 (29% off).
+   - SUPPORT (sidebar): Contact info and a form to report issues or request new games.
+   - ABOUT US (sidebar): Learn about Game Hub's mission and team.
+   - PROFILE (sidebar or top-right icon): View your name, email, phone, log out, or delete account.
+   - CHECKOUT: Pick a payment method (UPI/Google Pay, Credit/Debit Card, Net Banking, Cash on Delivery) then click Confirm & Pay.
+   - THEME TOGGLE: The switch in the top-right bar toggles between dark and light mode.
+
+Always be warm, concise, and gamer-friendly. Keep replies under 220 words unless a detailed game list is requested.`;
+
 function toggleChat(){
   const w=document.getElementById('cwin');
   w.classList.toggle('open');
   if(w.classList.contains('open')){
-    if(getKey()) showChatArea();
-    else{document.getElementById('keyScreen').style.display='flex';document.getElementById('chatArea').classList.remove('visible');}
-    setTimeout(()=>{const i=document.getElementById('cinp');if(i&&document.getElementById('chatArea').classList.contains('visible'))i.focus();},120);
+    setTimeout(()=>{const i=document.getElementById('cinp');if(i)i.focus();},120);
   }
 }
 
@@ -176,28 +176,19 @@ function sendMsg(){
   const btn=document.getElementById('csend');
   const txt=inp.value.trim();
   if(!txt)return;
-  const key=getKey();
-  if(!key){alert('Please enter your OpenAI API key first.');toggleChat();toggleChat();return;}
   appendMsg(esc(txt),'user');
   chatHistory.push({role:'user',content:txt});
   inp.value='';inp.disabled=true;btn.disabled=true;
   document.getElementById('qrow').style.display='none';
   const typing=appendMsg('Thinking...','typing');
 
-  const sys=`You are GameBot AI, a world-class gaming expert assistant embedded in Game Hub — a gaming store.
-Your primary job: when a user mentions a genre (Action, RPG, Horror, FPS, Strategy, Sports, Puzzle, Indie, Adventure, Simulation, Fighting, Racing, etc.), recommend 5-8 of the BEST games worldwide in that genre.
-For each game include: name, developer/publisher, release year, platform availability, and a 1-sentence reason why it's great.
-Format recommendations clearly with numbering. Use gaming emojis where natural.
-Also answer any gaming questions — tips, comparisons, hardware, news — with expert knowledge.
-Keep responses focused and under 200 words unless a detailed comparison is asked.`;
-
   fetch('https://api.openai.com/v1/chat/completions',{
     method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_API_KEY},
     body:JSON.stringify({
       model:'gpt-4o-mini',
-      max_tokens:600,
-      messages:[{role:'system',content:sys},...chatHistory.slice(-10)]
+      max_tokens:700,
+      messages:[{role:'system',content:BOT_SYSTEM},...chatHistory.slice(-12)]
     })
   })
   .then(r=>r.json())
@@ -208,8 +199,7 @@ Keep responses focused and under 200 words unless a detailed comparison is asked
       reply=d.choices[0].message.content;
       chatHistory.push({role:'assistant',content:reply});
     } else if(d.error){
-      reply='⚠️ OpenAI Error: '+d.error.message;
-      if(d.error.code==='invalid_api_key') reply='⚠️ Invalid API key. Click "Change Key" to update it.';
+      reply='⚠️ Error: '+d.error.message;
     } else {
       reply='⚠️ Unexpected response. Please try again.';
     }
@@ -217,7 +207,7 @@ Keep responses focused and under 200 words unless a detailed comparison is asked
   })
   .catch(err=>{
     if(typing.parentNode)typing.parentNode.removeChild(typing);
-    appendMsg('⚠️ Network error. Make sure you have a valid OpenAI key and internet connection.','bot');
+    appendMsg('⚠️ Network error. Please check your connection and try again.','bot');
     console.error(err);
   })
   .finally(()=>{inp.disabled=false;btn.disabled=false;inp.focus();});
