@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="pg-home" class="page">
+  <h1 class="home-title">GAME <span class="home-glow">HUB</span></h1>
+  <p class="home-sub">YOUR ONE DESTINATION FOR GAMING</p>
+  <button class="home-btn" onclick="goTo('login')">GAME ON</button>
+</div>
+
+<div id="pg-login" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h2>SIGN IN</h2>
+      <input class="ai" id="lEmail" type="email" placeholder="Email address">
+      <input class="ai" id="lPwd" type="password" placeholder="Password">
+      <div id="lMsg" class="am"></div>
+      <button class="ab" style="margin-top:14px" onclick="doLogin()">LOGIN</button>
+      <div class="alink" onclick="goTo('register')">New here? Register →</div>
+    </div>
+  </div>
+</div>
+
+<div id="pg-register" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h2>REGISTER</h2>
+      <input class="ai" id="rName" type="text" placeholder="Full name">
+      <input class="ai" id="rEmail" type="email" placeholder="Email address">
+      <input class="ai" id="rPhone" type="tel" placeholder="Phone number">
+      <input class="ai" id="rPwd" type="password" placeholder="Password">
+      <button class="ab" style="margin-top:14px" onclick="doRegister()">CREATE ACCOUNT</button>
+      <div id="rMsg" class="am"></div>
+      <div class="alink" onclick="goTo('login')">Already have an account? Login</div>
+    </div>
+  </div>
+</div>
+
+<div id="pg-inner" class="inner-page">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:14px">
+      <span class="clock" id="clk">00:00:00</span>
+    </div>
+    <div class="topbar-right">
+      <button class="tbtn" id="themeBtn" onclick="toggleTheme()"><span class="tdot"></span></button>
+      <div class="pp" onclick="navTo('profile')">👤</div>
+    </div>
+  </div>
+  <div class="bwrap">
+    <aside class="sidebar">
+      <div class="slogo">Game Hub</div>
+      <span class="sl" onclick="navTo('games')" data-n="games">🎮 Games</span>
+      <span class="sl" onclick="navTo('offers')" data-n="offers">🏷️ Offers</span>
+      <span class="sl" onclick="navTo('support')" data-n="support">📞 Support</span>
+      <span class="sl" onclick="navTo('about')" data-n="about">ℹ️ About Us</span>
+      <span class="sl" onclick="navTo('profile')" data-n="profile">👤 Profile</span>
+    </aside>
+    <main class="mc" id="mainArea"></main>
+  </div>
+</div>
+
+<!-- ChatGPT FAB -->
+<button class="cfab" id="cfab" onclick="toggleChat()">💬</button>
+
+<!-- ChatGPT Window -->
+<div class="cwin" id="cwin">
+
+  <!-- API KEY SETUP -->
+  <div class="key-screen" id="keyScreen">
+    <div class="key-icon">🔑</div>
+    <div class="key-title">Connect ChatGPT</div>
+    <div class="key-sub">Enter your OpenAI API key to enable AI game recommendations for any genre worldwide.<br><br>Your key is stored only in your browser — never sent to any server except OpenAI.</div>
+    <input class="key-inp" id="keyInp" type="password" placeholder="sk-...your OpenAI key...">
+    <button class="key-btn" onclick="saveKey()">Connect ChatGPT</button>
+    <div class="key-note">Get your API key at platform.openai.com → API Keys</div>
+  </div>
+
+  <!-- CHAT AREA -->
+  <div class="chat-area" id="chatArea">
+    <div class="chead">
+      <div class="chead-left">
+        <div class="cavt">🤖</div>
+        <div>
+          <div class="ctitle">GAMEBOT AI (ChatGPT)</div>
+          <div class="cstatus" id="cstatus">Powered by GPT-4o</div>
+        </div>
+      </div>
+      <div class="chead-right">
+        <button class="ckey-reset" onclick="resetKey()">Change Key</button>
+        <button class="cx" onclick="toggleChat()">✕</button>
+      </div>
+    </div>
+    <div class="cmsgs" id="cmsgs">
+      <div class="cmsg bot">👋 Hey gamer! I'm <strong>GameBot AI</strong>, powered by ChatGPT.<br><br>Tell me a genre — <em>Action, RPG, Horror, Strategy, Sports, Indie, Puzzle</em> — and I'll recommend the best games from around the world! 🎮</div>
+    </div>
+    <div class="qrow" id="qrow">
+      <button class="qb" onclick="qs('Recommend top Action games')">⚔️ Action</button>
+      <button class="qb" onclick="qs('Best RPG games of all time')">🧙 RPG</button>
+      <button class="qb" onclick="qs('Top Horror games to play')">👻 Horror</button>
+      <button class="qb" onclick="qs('Best Strategy games worldwide')">🗺️ Strategy</button>
+      <button class="qb" onclick="qs('Top Sports games right now')">⚽ Sports</button>
+      <button class="qb" onclick="qs('Best Indie games ever made')">🎨 Indie</button>
+    </div>
+    <div class="cfoot">
+      <input class="cinp" id="cinp" placeholder="Type a genre or ask anything about games..." onkeydown="if(event.key==='Enter')sendMsg()">
+      <button class="csend" id="csend" onclick="sendMsg()">➤</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
