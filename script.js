@@ -126,7 +126,7 @@ if(localStorage.getItem('ghTheme')==='light'){
 
 // ===== GAMEBOT AI (OpenAI) =====
 // 🔑 Paste your OpenAI API key here — visitors chat instantly, no setup needed
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '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';
 
 const BOT_SYSTEM = `You are GameBot AI, a friendly and expert assistant for Game Hub — an online gaming store.
 
