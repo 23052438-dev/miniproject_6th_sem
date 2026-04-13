@@ -69,51 +69,35 @@
 <!-- ChatGPT FAB -->
 <button class="cfab" id="cfab" onclick="toggleChat()">💬</button>
 
-<!-- ChatGPT Window -->
+<!-- GameBot AI Window — no key screen, chat opens instantly -->
 <div class="cwin" id="cwin">
-
-  <!-- API KEY SETUP -->
-  <div class="key-screen" id="keyScreen">
-    <div class="key-icon">🔑</div>
-    <div class="key-title">Connect ChatGPT</div>
-    <div class="key-sub">Enter your OpenAI API key to enable AI game recommendations for any genre worldwide.<br><br>Your key is stored only in your browser — never sent to any server except OpenAI.</div>
-    <input class="key-inp" id="keyInp" type="password" placeholder="sk-...your OpenAI key...">
-    <button class="key-btn" onclick="saveKey()">Connect ChatGPT</button>
-    <div class="key-note">Get your API key at platform.openai.com → API Keys</div>
-  </div>
-
-  <!-- CHAT AREA -->
-  <div class="chat-area" id="chatArea">
-    <div class="chead">
-      <div class="chead-left">
-        <div class="cavt">🤖</div>
-        <div>
-          <div class="ctitle">GAMEBOT AI (ChatGPT)</div>
-          <div class="cstatus" id="cstatus">Powered by GPT-4o</div>
-        </div>
-      </div>
-      <div class="chead-right">
-        <button class="ckey-reset" onclick="resetKey()">Change Key</button>
-        <button class="cx" onclick="toggleChat()">✕</button>
+  <div class="chead">
+    <div class="chead-left">
+      <div class="cavt">🤖</div>
+      <div>
+        <div class="ctitle">GAMEBOT AI</div>
+        <div class="cstatus">Powered by GPT-4o-mini · Always Online</div>
       </div>
     </div>
-    <div class="cmsgs" id="cmsgs">
-      <div class="cmsg bot">👋 Hey gamer! I'm <strong>GameBot AI</strong>, powered by ChatGPT.<br><br>Tell me a genre — <em>Action, RPG, Horror, Strategy, Sports, Indie, Puzzle</em> — and I'll recommend the best games from around the world! 🎮</div>
-    </div>
-    <div class="qrow" id="qrow">
-      <button class="qb" onclick="qs('Recommend top Action games')">⚔️ Action</button>
-      <button class="qb" onclick="qs('Best RPG games of all time')">🧙 RPG</button>
-      <button class="qb" onclick="qs('Top Horror games to play')">👻 Horror</button>
-      <button class="qb" onclick="qs('Best Strategy games worldwide')">🗺️ Strategy</button>
-      <button class="qb" onclick="qs('Top Sports games right now')">⚽ Sports</button>
-      <button class="qb" onclick="qs('Best Indie games ever made')">🎨 Indie</button>
-    </div>
-    <div class="cfoot">
-      <input class="cinp" id="cinp" placeholder="Type a genre or ask anything about games..." onkeydown="if(event.key==='Enter')sendMsg()">
-      <button class="csend" id="csend" onclick="sendMsg()">➤</button>
+    <div class="chead-right">
+      <button class="cx" onclick="toggleChat()">✕</button>
     </div>
   </div>
-
+  <div class="cmsgs" id="cmsgs">
+    <div class="cmsg bot">👋 Hey gamer! I'm <strong>GameBot AI</strong>.<br><br>Tell me your favourite genre or vibe and I'll recommend the perfect games for you — or ask me anything about this website! 🎮</div>
+  </div>
+  <div class="qrow" id="qrow">
+    <button class="qb" onclick="qs('Recommend top Action games for me')">⚔️ Action</button>
+    <button class="qb" onclick="qs('Best RPG games of all time')">🧙 RPG</button>
+    <button class="qb" onclick="qs('Top Horror games to play')">👻 Horror</button>
+    <button class="qb" onclick="qs('Best Indie games ever made')">🎨 Indie</button>
+    <button class="qb" onclick="qs('How do I buy a game on this site?')">🛒 How to Buy</button>
+    <button class="qb" onclick="qs('What offers and discounts are available?')">🏷️ Offers</button>
+  </div>
+  <div class="cfoot">
+    <input class="cinp" id="cinp" placeholder="Ask for game picks or site help..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="csend" id="csend" onclick="sendMsg()">➤</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
