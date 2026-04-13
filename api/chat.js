@@ -11,15 +11,15 @@ export default async function handler(req, res) {
     const { messages } = req.body;
 
     const response = await fetch(
-      "https://api.openai.com/v1/chat/completions",
+      "https://api.groq.com/openai/v1/chat/completions",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`
         },
         body: JSON.stringify({
-          model: "gpt-4.1-mini",
+          model: "llama3-8b-8192",   // fast & free model
           messages: messages,
           temperature: 0.7
         })
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    res.status(200).json(data);
+    res.status(response.status).json(data);
 
   } catch (error) {
 
