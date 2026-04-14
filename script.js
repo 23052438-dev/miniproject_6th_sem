@@ -32,8 +32,8 @@ const GAMES = [
     desc: "Mine resources, craft tools, and build anything imaginable in an infinite procedurally generated world.",
     hero: "https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_Vanilla_Keyart_Hero-TALL.jpg",
     imgs: [
-      "https://www.minecraft.net/content/dam/games/minecraft/screenshots/1.21-keyart.jpg",
-      "https://www.minecraft.net/content/dam/games/minecraft/screenshots/BatsNew_Minecraft_Screenshot.jpg"
+      "https://preview.redd.it/4k-image-i-want-to-get-this-image-made-into-a-poster-for-my-v0-hmvcuwyof6g01.jpg?width=1080&crop=smart&auto=webp&s=64016ef8f9e11db4e53714ec17ca46981a1c9136",
+      "https://preview.redd.it/if-minecraft-had-been-released-in-the-90s-v0-bze0vcomwyka1.png?width=1080&crop=smart&auto=webp&s=746287da04037a20be3d37a2fc1b518992e80047"
     ]
   },
   {
