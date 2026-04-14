@@ -889,6 +889,226 @@ const GAMES = [
         desc: "The final chapter of Lara Croft’s origin trilogy.",
         hero: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/750920/header.jpg",
         requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 1060",storage:"40 GB"}
+    },
+    
+    {
+          id:"horizonzerodawn",
+          name:"Horizon Zero Dawn",
+          price:"₹1,499",
+          pv:"1499",
+          genre:"Action RPG",
+          desc:"Explore a world ruled by machines and uncover the secrets of the past as Aloy in this stunning open-world adventure.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1151640/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 970",storage:"100 GB"}
+    },
+    
+    {
+          id:"daysgone",
+          name:"Days Gone",
+          price:"₹1,999",
+          pv:"1999",
+          genre:"Open World",
+          desc:"Survive in a post-apocalyptic world filled with hordes of infected enemies and intense storytelling.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1259420/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 1060",storage:"70 GB"}
+    },
+    
+    {
+          id:"deathstranding",
+          name:"Death Stranding",
+          price:"₹2,499",
+          pv:"2499",
+          genre:"Adventure",
+          desc:"Reconnect a fractured world in this unique narrative-driven experience by Hideo Kojima.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1190460/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 1060",storage:"80 GB"}
+    },
+    
+    {
+          id:"subnautica",
+          name:"Subnautica",
+          price:"₹899",
+          pv:"899",
+          genre:"Survival",
+          desc:"Dive into an alien ocean world filled with mystery, danger, and exploration.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/264710/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 660",storage:"20 GB"}
+    },
+    
+    {
+          id:"subnautica_below",
+          name:"Subnautica Below Zero",
+          price:"₹1,199",
+          pv:"1199",
+          genre:"Survival",
+          desc:"Return to the alien ocean in this chilling standalone expansion.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/848450/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 1050",storage:"20 GB"}
+    },
+    
+    {
+          id:"forest",
+          name:"The Forest",
+          price:"₹699",
+          pv:"699",
+          genre:"Survival Horror",
+          desc:"Survive a plane crash and fight against cannibalistic mutants in a dense forest.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/242760/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"4 GB RAM",gpu:"GTX 560",storage:"5 GB"}
+    },
+    
+    {
+          id:"littleNightmares",
+          name:"Little Nightmares",
+          price:"₹499",
+          pv:"499",
+          genre:"Horror",
+          desc:"A dark puzzle-platformer where you escape terrifying creatures in a surreal world.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/424840/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"4 GB RAM",gpu:"GTX 460",storage:"10 GB"}
+    },
+    
+    {
+          id:"inside",
+          name:"INSIDE",
+          price:"₹399",
+          pv:"399",
+          genre:"Puzzle",
+          desc:"A haunting puzzle-platformer with a mysterious narrative and stunning visuals.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/304430/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"4 GB RAM",gpu:"Intel HD",storage:"3 GB"}
+    },
+    
+    {
+          id:"limbo",
+          name:"LIMBO",
+          price:"₹199",
+          pv:"199",
+          genre:"Puzzle",
+          desc:"A minimalistic puzzle-platformer with dark atmosphere and clever gameplay.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/48000/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"2 GB RAM",gpu:"Intel HD",storage:"200 MB"}
+    },
+    
+    {
+          id:"cuphead",
+          name:"Cuphead",
+          price:"₹799",
+          pv:"799",
+          genre:"Platformer",
+          desc:"A challenging platformer with hand-drawn visuals and fast-paced boss fights.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"4 GB RAM",gpu:"GTX 460",storage:"4 GB"}
+    },
+        
+    {
+          id:"hades",
+          name:"Hades",
+          price:"₹899",
+          pv:"899",
+          genre:"Roguelike",
+          desc:"Escape the underworld in this fast-paced action roguelike with deep storytelling.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145360/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 950",storage:"15 GB"}
+    },
+    
+    {
+          id:"deadcells",
+          name:"Dead Cells",
+          price:"₹699",
+          pv:"699",
+          genre:"Roguelike",
+          desc:"A fast-paced roguelike platformer with fluid combat and exploration.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"4 GB RAM",gpu:"Intel HD",storage:"2 GB"}
+    },
+    
+    {
+          id:"celeste",
+          name:"Celeste",
+          price:"₹499",
+          pv:"499",
+          genre:"Platformer",
+          desc:"Climb a mountain while overcoming challenges and emotional struggles.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504230/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"4 GB RAM",gpu:"Intel HD",storage:"1 GB"}
+    },
+    
+    {
+          id:"ori",
+          name:"Ori and the Blind Forest",
+          price:"₹699",
+          pv:"699",
+          genre:"Platformer",
+          desc:"A visually stunning adventure with emotional storytelling.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/387290/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 950",storage:"8 GB"}
+    },
+    
+    {
+          id:"ori2",
+          name:"Ori and the Will of the Wisps",
+          price:"₹1,299",
+          pv:"1299",
+          genre:"Platformer",
+          desc:"A sequel with enhanced visuals, gameplay, and emotional depth.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1057090/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 970",storage:"20 GB"}
+    },
+    
+    {
+          id:"arkhamknight",
+          name:"Batman Arkham Knight",
+          price:"₹1,499",
+          pv:"1499",
+          genre:"Action",
+          desc:"Take control of Batman and protect Gotham City from chaos.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/208650/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 970",storage:"55 GB"}
+    },
+    
+    {
+          id:"arkhamcity",
+          name:"Batman Arkham City",
+          price:"₹799",
+          pv:"799",
+          genre:"Action",
+          desc:"Fight crime in a massive open-world prison city.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/200260/header.jpg",
+          requirements:{os:"Windows 7",cpu:"Intel i3",ram:"4 GB RAM",gpu:"GTX 560",storage:"17 GB"}
+    },
+    
+    {
+          id:"bioshock",
+          name:"BioShock Remastered",
+          price:"₹699",
+          pv:"699",
+          genre:"FPS",
+          desc:"Explore the underwater city of Rapture in this classic FPS.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/409710/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 770",storage:"25 GB"}
+    },
+    
+    {
+          id:"bioshock2",
+          name:"BioShock 2",
+          price:"₹699",
+          pv:"699",
+          genre:"FPS",
+          desc:"Return to Rapture and uncover more mysteries.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/409720/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 770",storage:"25 GB"}
+    },
+    
+    {
+          id:"bioshockinf",
+          name:"BioShock Infinite",
+          price:"₹999",
+          pv:"999",
+          genre:"FPS",
+          desc:"A story-driven FPS set in a floating city.",
+          hero:"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/8870/header.jpg",
+          requirements:{os:"Windows 10",cpu:"Intel i5",ram:"8 GB RAM",gpu:"GTX 970",storage:"30 GB"}
     }
 ];
   
